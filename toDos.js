@@ -1,3 +1,5 @@
+// body.classList.add("container");
+
 console.log("to do list");
 
 const body = document.querySelector("body");
@@ -41,6 +43,8 @@ const renderList = () => {
     delBtn.style.backgroundColor = "white";
     delBtn.innerHTML = "Delete";
     delBtn.addEventListener("click", () => deleteTask(i));
+    delBtn.className = "btn";
+    delBtn.className = "btn-danger btn-xs ";
     newItem.append(delBtn);
 
     // update button
@@ -52,6 +56,9 @@ const renderList = () => {
     updBtn.addEventListener("click", () => {
       updateListItem(i);
     });
+    updBtn.className = "btn";
+    updBtn.className = "btn-success btn-xs ";
+    // updBtn.style.backgroundColor = "lightblue";
     newItem.append(updBtn);
   }
 };
@@ -67,10 +74,10 @@ input.placeholder = "Write A Task";
 
 const button1 = document.createElement("button");
 button1.id = "myBtn";
+button1.innerText = "Add To List";
+button1.className = "btn";
+button1.className = "btn-primary";
 body.append(button1);
-button1.innerHTML = "Add To List";
-button1.style.backgroundColor = "lightBLue";
-
 button1.addEventListener("click", function () {
   if (input.value.length) {
     toDos.push(input.value);
