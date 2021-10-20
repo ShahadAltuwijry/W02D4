@@ -5,7 +5,7 @@ console.log("to do list");
 const body = document.querySelector("body");
 const listTitle = document.createElement("h1");
 listTitle.innerHTML = "to do list";
-
+// listTitle.className = "text-center";
 body.append(listTitle);
 
 const ulList = document.createElement("ul");
@@ -34,6 +34,7 @@ const renderList = () => {
   for (let i = 0; i < toDos.length; i++) {
     const newItem = document.createElement("li");
     newItem.innerHTML = toDos[i];
+    // newItem.className = "text-center";
     ulList.append(newItem);
 
     // delete button
@@ -44,7 +45,7 @@ const renderList = () => {
     delBtn.innerHTML = "Delete";
     delBtn.addEventListener("click", () => deleteTask(i));
     delBtn.className = "btn";
-    delBtn.className = "btn-danger btn-xs ";
+    delBtn.className = "btn-default btn-xs ";
     newItem.append(delBtn);
 
     // update button
@@ -57,7 +58,7 @@ const renderList = () => {
       updateListItem(i);
     });
     updBtn.className = "btn";
-    updBtn.className = "btn-success btn-xs ";
+    updBtn.className = "btn-primary btn-xs ";
     // updBtn.style.backgroundColor = "lightblue";
     newItem.append(updBtn);
   }
@@ -69,6 +70,7 @@ renderList();
 
 const input = document.createElement("input");
 input.id = "myInput";
+input.className = "text-center";
 body.append(input);
 input.placeholder = "Write A Task";
 
