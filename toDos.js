@@ -10,7 +10,22 @@ const ulList = document.createElement("ul");
 ulList.id = "myList";
 body.append(ulList);
 
-const toDos = ["wake up  ", "eat breakfast  ", "code  "];
+let toDos = ["wake up  ", "eat breakfast  ", "code  "];
+
+const deleteTask = (index) => {
+  // solution 1
+  toDos.splice(index, 1);
+  renderList();
+};
+//solution 2
+//   toDos = toDos.filter((todo, i) => i !== index);
+//   renderList();
+
+const updateListItem = (i) => {
+  const newText = prompt("write the new task");
+  toDos[i] = newText;
+  renderList();
+};
 
 const renderList = () => {
   ulList.innerHTML = "";
@@ -19,22 +34,24 @@ const renderList = () => {
     newItem.innerHTML = toDos[i];
     ulList.append(newItem);
 
-    //event function
-
     // delete button
 
     const delBtn = document.createElement("button");
     delBtn.id = "#delBtn";
     delBtn.style.backgroundColor = "white";
     delBtn.innerHTML = "Delete";
+    delBtn.addEventListener("click", () => deleteTask(i));
     newItem.append(delBtn);
 
     // update button
 
     const updBtn = document.createElement("button");
-    updBtn.id = "#updBtn";
+    // updBtn.id = i;
     updBtn.style.backgroundColor = "white";
     updBtn.innerHTML = "Update";
+    updBtn.addEventListener("click", () => {
+      updateListItem(i);
+    });
     newItem.append(updBtn);
   }
 };
@@ -61,4 +78,4 @@ button1.addEventListener("click", function () {
   }
 });
 
-// 6. ----------------------------
+// 6. ---------------------------
