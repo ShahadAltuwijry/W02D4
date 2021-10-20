@@ -10,7 +10,7 @@ const ulList = document.createElement("ul");
 ulList.id = "myList";
 body.append(ulList);
 
-const toDos = ["wake up", "eat breakfast", "code"];
+const toDos = ["wake up  ", "eat breakfast  ", "code  "];
 
 const renderList = () => {
   ulList.innerHTML = "";
@@ -19,14 +19,23 @@ const renderList = () => {
     newItem.innerHTML = toDos[i];
     ulList.append(newItem);
 
+    //event function
+
     // delete button
 
     const delBtn = document.createElement("button");
     delBtn.id = "#delBtn";
-    delBtn.style.display = "block";
     delBtn.style.backgroundColor = "white";
     delBtn.innerHTML = "Delete";
     newItem.append(delBtn);
+
+    // update button
+
+    const updBtn = document.createElement("button");
+    updBtn.id = "#updBtn";
+    updBtn.style.backgroundColor = "white";
+    updBtn.innerHTML = "Update";
+    newItem.append(updBtn);
   }
 };
 
