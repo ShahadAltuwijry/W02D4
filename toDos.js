@@ -1,22 +1,27 @@
-// body.classList.add("container");
-
 console.log("to do list");
 
 const body = document.querySelector("body");
+body.classList.add("container");
 const listTitle = document.createElement("h1");
 listTitle.innerHTML = "to do list";
-// listTitle.className = "text-center";
+listTitle.className = "text-left";
 body.append(listTitle);
 
 const ulList = document.createElement("ul");
 ulList.id = "myList";
+// ulList.className.add = "d-flex justify-content-center";
 body.append(ulList);
 
 let toDos = ["wake up  ", "eat breakfast  ", "code  "];
 
+// JSON.stringify(toDos);
+localStorage.setItem("Tasks", JSON.stringify(toDos));
+let retTasks = localStorage.getItem("Tasks");
+console.log(toDos);
 const deleteTask = (index) => {
   // solution 1
   toDos.splice(index, 1);
+  localStorage.removeItem(index);
   renderList();
 };
 //solution 2
@@ -33,10 +38,10 @@ const renderList = () => {
   ulList.innerHTML = "";
   for (let i = 0; i < toDos.length; i++) {
     const newItem = document.createElement("li");
+
     newItem.innerHTML = toDos[i];
     // newItem.className = "text-center";
     ulList.append(newItem);
-
     // delete button
 
     const delBtn = document.createElement("button");
@@ -70,7 +75,7 @@ renderList();
 
 const input = document.createElement("input");
 input.id = "myInput";
-input.className = "text-center";
+// input.className = "text-center";
 body.append(input);
 input.placeholder = "Write A Task";
 
@@ -83,6 +88,9 @@ body.append(button1);
 button1.addEventListener("click", function () {
   if (input.value.length) {
     toDos.push(input.value);
+    localStorage.setItem("newTasks", JSON.stringify(input.value));
+    let retTasks = localStorage.getItem("newTasks");
+    console.log(input.value);
     renderList();
   }
 });
